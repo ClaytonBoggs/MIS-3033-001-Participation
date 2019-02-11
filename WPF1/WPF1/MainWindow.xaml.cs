@@ -29,13 +29,39 @@ namespace WPF1
 
         private void SubmitButton_Click(object sender, RoutedEventArgs e)
         {
+            string name, address;
+            int zipCode;
+            bool isFormValid = true;
+
+            name = nameBox.Text;
+            address = addressBox.Text;
+            zipCode = Convert.ToInt32(zipBox.Text);
+
+            if(name == "" || name == string.Empty)
+            {
+                MessageBox.Show("Please input yourn name");
+                nameBox.Focus();
+                //return;
+                isFormValid = false;
+            }
+            if (address == "")
+            {
+                MessageBox.Show("Please input your address");
+                isFormValid = false;
+            }
+            if (isFormValid == false)
+            {
+                return;
+            }
+
             Form individual = new Form();
-            individual.Name = nameBox.Text;
-            individual.Address = addressBox.Text;
-            individual.ZipCode = Convert.ToInt32(zipBox.Text);
-            list.Items.Add(nameBox.Text);
-            list.Items.Add(addressBox.Text);
-            list.Items.Add(zipBox.Text);
+            individual.Name = name;
+            individual.Address = address;
+            individual.ZipCode = zipCode;
+
+            list.Items.Add(individual);
+            //list.Items.Add(addressBox.Text);
+            //list.Items.Add(zipBox.Text);
         }
     }
 }

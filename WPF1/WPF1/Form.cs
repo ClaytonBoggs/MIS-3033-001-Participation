@@ -25,5 +25,11 @@ namespace WPF1
             Address = address;
             ZipCode = zipCode;
         }
+
+        public override string ToString()
+        {
+            string entryForm = $"{Name} lives @ {Address} {ZipCode}";
+            return entryForm;
+        }
     }
 }
